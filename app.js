@@ -10,6 +10,137 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+// TODO NICE TO HAVES:
+// TODO USE EXPRESS AS A TEMPLATE ENGINE
+// TODO PUSH TO HEROKU SO I CAN SEE IT RUNNING
+// todo move questions to separate json file
+let team = [];
+
+const questions = {
+    common : [
+        {
+            type: 'list',
+            name: 'role',
+            message: "Role: ",
+            choices: ["Manager", "Engineer", "Intern"]
+        }, 
+        {
+            type: 'input',
+            name: 'name',
+            message: "Name: ",
+            validate: function(name){
+                return name !== '';
+            }
+        }, 
+        {
+            type: 'input',
+            name: 'email',
+            message: "Email: ",
+            validate: function(name){
+                return name !== '';
+            }
+        }
+    ],
+
+    manager : [
+        {
+            type: 'input',
+            name: 'office',
+            message: "Office: ",
+            validate: function(name){
+                return name !== '';
+            }
+        }
+    ],
+
+    engineer : [
+        {
+            type: 'input',
+            name: 'github',
+            message: "Github Username: ",
+            validate: function(name){
+                return name !== '';
+            }
+        }
+    ],
+
+    intern : [
+        {
+            type: 'input',
+            name: 'school',
+            message: "School: ",
+            validate: function(name){
+                return name !== '';
+            }
+        }
+    ],
+    
+    add : [
+        {
+            type: 'list',
+            name: 'continue',
+            message: "Add another employee? ",
+            choices: ["Yes", "No"]
+        }, 
+    ]
+};
+
+function writeToFile(dirName, data) {
+    // fs.mkdirSync(`${process.cwd()}/readmes/${dirName}`, {recursive: true}, (error) => {
+    //     if(error){console.log(error)}
+    // });
+    // fs.writeFileSync(`${process.cwd()}/readmes/${dirName}/README.md`, data);
+    // console.log(`\nREADME is complete.\nIt is located: ${process.cwd()}/readmes/${dirName}/README.md`);
+}
+common
+if role = manager
+ask manger
+
+ask add more
+
+repeat
+
+function askQuestions(q){
+    inquirer.prompt(q).then((answers) => {
+        // grab role choice from first round of qs
+        // askQuestions(questions[answers.role])
+        let role = questions[answers.role];
+
+        inquirer.prompt(role).then((answers, role) => {
+            // potential instantiate class here
+            let obj = {};
+            if(role === 'Manager'){
+                obj = new Manager(answers);
+            }else if(role === 'Engineer'){
+                obj = new Engineer(answers);
+            }else{
+                obj = new Intern(answers);
+            }
+            team.push(obj);
+
+            inquirer.prompt(questions.add).then((answers) => {
+                if(answers.continue === "Yes"){
+                    askQuestions(questions.common)
+                }else{
+                    // create the HTML
+                    // let HTML = generateHTML(team);
+                    // writeToFile(`${answers.repo}`, HTML);
+                }
+            })
+        });
+    });
+}
+
+function init() {
+    askQuestions(questions.common);
+}
+
+init();
+// after each answer, prompt add another?
+// if yes
+//     do the thing again
+// else
+//     build roster
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
