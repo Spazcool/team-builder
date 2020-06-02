@@ -36,6 +36,7 @@ const questions = {
             type: 'input',
             name: 'email',
             message: "Email: ",
+            // todo add validation that a email is inlcuded
             validate: function(name){
                 return name !== '';
             }
@@ -45,8 +46,9 @@ const questions = {
     manager : [
         {
             type: 'input',
-            name: 'office',
-            message: "Office: ",
+            name: 'officeNumber',
+            message: "Office Number: ",
+            // todo add validation that a number is inlcuded
             validate: function(name){
                 return name !== '';
             }
@@ -92,44 +94,70 @@ function writeToFile(dirName, data) {
     // fs.writeFileSync(`${process.cwd()}/readmes/${dirName}/README.md`, data);
     // console.log(`\nREADME is complete.\nIt is located: ${process.cwd()}/readmes/${dirName}/README.md`);
 }
-common
-if role = manager
-ask manger
-
-ask add more
-
-repeat
 
 function askQuestions(q){
-    inquirer.prompt(q).then((answers) => {
+    let allAnswers = [];
+    let role = '';
+    let position = "Employee";
+
+    // const second = 42;
+    // const third = new Promise((resolve, reject) => {
+    //   setTimeout(resolve, 100, 'foo');
+    // });
+
+    let first = async() => {
+        return await inquirer.prompt(q).then((answers) => {
         // grab role choice from first round of qs
         // askQuestions(questions[answers.role])
-        let role = questions[answers.role];
-
-        inquirer.prompt(role).then((answers, role) => {
-            // todo randomly/sequentially assing id
-            // potential instantiate class here
-            let obj = {};
-            if(role === 'Manager'){
-                obj = new Manager(answers);
-            }else if(role === 'Engineer'){
-                obj = new Engineer(answers);
-            }else{
-                obj = new Intern(answers);
-            }
-            team.push(obj);
-
-            inquirer.prompt(questions.add).then((answers) => {
-                if(answers.continue === "Yes"){
-                    askQuestions(questions.common)
-                }else{
-                    // create the HTML
-                    // let HTML = generateHTML(team);
-                    // writeToFile(`${answers.repo}`, HTML);
-                }
-            })
-        });
+        role = questions[answers.role.toLowerCase()];
+        position = answers.role;
+        allAnswers.push(answers);
+        // console.log('something')
+        // console.log(answers.role)
+        // console.log(role) 
+        // console.log('first ', answers)
+        // console.log('first ', allAnswers)
+        return answers;
     });
+    }
+  
+    // console.log('moo')
+    // let second = inquirer.prompt(questions.manager).then((answers) => {
+    //     return answers;
+    // });
+    //     allAnswers.push(answers);
+    //     console.log('second', answers)
+    //     console.log('second ', allAnswers)
+
+        // console.log('second', position)
+    //     // todo randomly/sequentially assing id
+    //     // potential instantiate class here
+        // let obj = {};
+        // if(position === 'Manager'){
+        //     // name,
+        //     // id,
+        //     // email,
+        //     // role  
+        //     obj = new Manager(answers);
+        // }else if(position === 'Engineer'){
+        //     obj = new Engineer(answers);
+        // }else{
+        //     obj = new Intern(answers);
+        // }
+        // team.push(obj);
+        // console.log(team)
+    //     inquirer.prompt(questions.add).then((answers) => {
+    //         if(answers.continue === "Yes"){
+    //             askQuestions(questions.common)
+    //         }else{
+    //             let HTML = render(team);
+    //             writeToFile('dude.html', HTML);
+    //         }
+    //     })
+    // });
+    Promise.all([first]).then((values) => {
+        console.log(values);
+      });
 }
 
 function init() {
