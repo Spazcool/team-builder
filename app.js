@@ -107,6 +107,7 @@ function askQuestions(q){
         let role = questions[answers.role];
 
         inquirer.prompt(role).then((answers, role) => {
+            // todo randomly/sequentially assing id
             // potential instantiate class here
             let obj = {};
             if(role === 'Manager'){
