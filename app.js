@@ -14,7 +14,6 @@ const render = require("./lib/htmlRenderer");
 // TODO USE EXPRESS AS A TEMPLATE ENGINE
 // TODO PUSH TO HEROKU SO I CAN SEE IT RUNNING
 // todo move questions to separate json file
-let team = [];
 
 const questions = {
     common : [
@@ -79,10 +78,9 @@ const questions = {
     
     add : [
         {
-            type: 'list',
+            type: 'confirm',
             name: 'continue',
             message: "Add another employee? ",
-            choices: ["Yes", "No"]
         }, 
     ]
 };
@@ -95,69 +93,55 @@ function writeToFile(dirName, data) {
     // console.log(`\nREADME is complete.\nIt is located: ${process.cwd()}/readmes/${dirName}/README.md`);
 }
 
+let allEmployees = [];
+
 function askQuestions(q){
-    let allAnswers = [];
-    let role = '';
+    let obj = {};
     let position = "Employee";
 
-    // const second = 42;
-    // const third = new Promise((resolve, reject) => {
-    //   setTimeout(resolve, 100, 'foo');
-    // });
-
-    let first = async() => {
-        return await inquirer.prompt(q).then((answers) => {
-        // grab role choice from first round of qs
-        // askQuestions(questions[answers.role])
-        role = questions[answers.role.toLowerCase()];
+    inquirer.prompt(q)
+    .then((answers) => {
         position = answers.role;
-        allAnswers.push(answers);
-        // console.log('something')
-        // console.log(answers.role)
-        // console.log(role) 
-        // console.log('first ', answers)
-        // console.log('first ', allAnswers)
-        return answers;
-    });
-    }
-  
-    // console.log('moo')
-    // let second = inquirer.prompt(questions.manager).then((answers) => {
-    //     return answers;
-    // });
-    //     allAnswers.push(answers);
-    //     console.log('second', answers)
-    //     console.log('second ', allAnswers)
+        obj = answers;
 
-        // console.log('second', position)
-    //     // todo randomly/sequentially assing id
-    //     // potential instantiate class here
-        // let obj = {};
-        // if(position === 'Manager'){
-        //     // name,
-        //     // id,
-        //     // email,
-        //     // role  
-        //     obj = new Manager(answers);
-        // }else if(position === 'Engineer'){
-        //     obj = new Engineer(answers);
-        // }else{
-        //     obj = new Intern(answers);
-        // }
-        // team.push(obj);
-        // console.log(team)
-    //     inquirer.prompt(questions.add).then((answers) => {
-    //         if(answers.continue === "Yes"){
-    //             askQuestions(questions.common)
-    //         }else{
-    //             let HTML = render(team);
-    //             writeToFile('dude.html', HTML);
-    //         }
-    //     })
-    // });
-    Promise.all([first]).then((values) => {
-        console.log(values);
-      });
+        inquirer.prompt(questions[position.toLowerCase()])
+        .then((answers) => {
+            for(answer in answers){
+                obj[answer] = answers[answer];
+                obj.id = allEmployees.length + 1;
+            }
+
+            inquirer.prompt(questions.add)
+            .then((answers) => {
+                allEmployees.push(obj);
+
+                if(answers.continue){
+                    askQuestions(questions.common)
+                }else{
+      
+                    let objs = allEmployees.map((employee) => {
+                        let {name, email, role, id} = employee;
+                        let emp = 'employee';
+
+                        if(role === 'Manager'){
+                            this[emp+'id'] = new Manager(name, id, email, role, employee.officeNumber);
+                        }else if(position === 'Engineer'){
+                            this[emp+'id'] = new Engineer(name, id, email, role, employee.github);
+                        }else{
+                            this[emp+'id'] = new Intern(name, id, email, role, employee.school);
+                        }
+                        console.log(this[emp+'id']);
+                        return this[emp+'id'];
+                    })
+                    // console.log('to call html generator')
+                    // console.log(allEmployees)
+                    console.log(objs[0].getRole())
+                    // let thing = render(objs);
+                    // console.log(thing)
+                }
+            });
+        })
+    })
 }
 
 function init() {
@@ -165,11 +149,6 @@ function init() {
 }
 
 init();
-// after each answer, prompt add another?
-// if yes
-//     do the thing again
-// else
-//     build roster
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
