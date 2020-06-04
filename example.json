@@ -13,12 +13,40 @@
         "id": 2,
         "github": "mike" 
     },
+    { 
+        "role": "Engineer",
+        "name": "Joe",
+        "email": "joe@joe.jos",
+        "id": 5,
+        "github": "joe" 
+    },
+    { 
+        "role": "Engineer",
+        "name": "Madeline",
+        "email": "madeline@madeline.madeline",
+        "id": 6,
+        "github": "madeline" 
+    },
     {
         "role": "Manager",
         "name": "Maria",
         "email": "Mara@maria.maria",
         "id": 3,
         "officeNumber": 3 
+    },
+    {
+        "role": "Intern",
+        "name": "Neola",
+        "email": "neola@neola.neola",
+        "id": 4,
+        "school": "USM"
+    },
+    {
+        "role": "Intern",
+        "name": "Neola",
+        "email": "neola@neola.neola",
+        "id": 4,
+        "school": "USM"
     },
     {
         "role": "Intern",

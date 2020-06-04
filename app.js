@@ -4,18 +4,13 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+var emoji = require('node-emoji')
 require('dotenv').config();
-const thing = require('./example.json')
-
-
+const render = require("./lib/htmlRenderer");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
-
-// TODO PUSH TO HEROKU SO I CAN SEE IT RUNNING
-// todo allow json import of team
 const questions = {
     team : [
         {
@@ -105,7 +100,7 @@ const questions = {
     ]
 };
 
-function writeToFile(file, data) {
+function writeToFile(data) {
     if(!fs.existsSync(OUTPUT_DIR)){
         fs.mkdirSync(OUTPUT_DIR,  (error) => {
             if(error){console.log(error)}
@@ -115,7 +110,7 @@ function writeToFile(file, data) {
     fs.writeFileSync(`${outputPath}`, data, (error) => {
         if(error){console.log(error)}
     });
-    console.log(`\n HTML is complete.\nIt is located: ${outputPath}`);
+    console.log(`\nHTML is complete!!!!\nIt is located here ${emoji.emojify(':point_right:')} ${outputPath}`);
 }
 
 let allEmployees = [];
@@ -145,7 +140,7 @@ function askQuestions(q){
                     .then((answers) => {
                         let teamName = answers.team ? answers.team : 'My Team';  
                         let team = buildTeamObjs(allEmployees);
-                        writeToFile('team.html', render(team, teamName));
+                        writeToFile(render(team, teamName));
                     }) 
                 }
             });
@@ -169,7 +164,7 @@ function buildTeamObjs(arr){
 }
 
 function init() {
-    console.log('Welcome to my fancy smancy CLI team builder!');
+    console.log(emoji.emojify(':fire:  Welcome to my fancy smancy CLI team builder! :fire:'));
     if(process.argv.slice(2).length){
         let myArgs = process.argv.slice(2);
         let fileLocation = path.resolve(__dirname, myArgs[0]);
@@ -177,7 +172,7 @@ function init() {
         let file = fs.readFileSync(fileLocation, {encoding:'utf8', flag:'r'});
         let team = buildTeamObjs(JSON.parse(file));
 
-        writeToFile('team.html', render(team, teamName));
+        writeToFile(render(team, teamName));
     }else{
         askQuestions(questions.common);
     }
