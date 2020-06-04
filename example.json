@@ -1,0 +1,30 @@
+[ 
+    {
+        "role": "Manager",
+        "name": "Bob",
+        "email": "doug@doug.doug",
+        "id": 1,
+        "officeNumber": 1
+    },
+    { 
+        "role": "Engineer",
+        "name": "Mike",
+        "email": "mike@mike.mike",
+        "id": 2,
+        "github": "mike" 
+    },
+    {
+        "role": "Manager",
+        "name": "Jim",
+        "email": "jim@jim.jim",
+        "id": 3,
+        "officeNumber": 3 
+    },
+    {
+        "role": "Intern",
+        "name": "Neola",
+        "email": "neola@neola.neola",
+        "id": 4,
+        "school": "USM"
+    }
+]

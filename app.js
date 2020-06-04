@@ -5,6 +5,8 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 require('dotenv').config();
+const thing = require('./example.json')
+
 
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
@@ -14,7 +16,6 @@ const render = require("./lib/htmlRenderer");
 
 // TODO PUSH TO HEROKU SO I CAN SEE IT RUNNING
 // todo allow json import of team
-// todo inject team name
 const questions = {
     team : [
         {
@@ -124,9 +125,9 @@ function askQuestions(q){
 
     inquirer.prompt(q)
     .then((answers) => {
-        position = answers.role;
+        // position = answers.role;
         obj = answers;
-        obj.position = answers.role
+        // obj.position = answers.role
         obj.id = allEmployees.length + 1;
 
         inquirer.prompt(questions[obj.position.toLowerCase()])
@@ -144,19 +145,8 @@ function askQuestions(q){
                 }else{
                     inquirer.prompt(questions.team)
                     .then((answers) => {
-                        let teamName = answers.team ? answers.team : 'My Team';
-                        let team = allEmployees.map((employee) => {
-                            let {name, email, id, officeNumber, github, school, position} = employee;
-    
-                            if(position === 'Manager'){
-                                return new Manager(name, id, email, officeNumber);
-                            }else if(position === 'Engineer'){
-                                return new Engineer(name, id, email, github);
-                            }else{
-                                return new Intern(name, id, email, school);
-                            }
-                        })
-                        // let team = buildTeamObjs(allEmployees, position);
+                        let teamName = answers.team ? answers.team : 'My Team';  
+                        let team = buildTeamObjs(allEmployees);
                         writeToFile('team.html', render(team, teamName));
                     }) 
                 }
@@ -165,8 +155,34 @@ function askQuestions(q){
     })
 }
 
+function buildTeamObjs(arr){
+    console.log(arr);
+    let team = arr.map((employee) => {
+        let {name, email, id, officeNumber, github, school, role} = employee;
+
+        if(role === 'Manager'){
+            return new Manager(name, id, email, officeNumber);
+        }else if(role === 'Engineer'){
+            return new Engineer(name, id, email, github);
+        }else{
+            return new Intern(name, id, email, school);
+        }
+    })
+    return team;
+}
+
 function init() {
-    askQuestions(questions.common);
+    if(process.argv.slice(2).length){
+        let myArgs = process.argv.slice(2);
+        let fileLocation = path.resolve(__dirname, myArgs[0]);
+        let teamName = myArgs[1] ? myArgs[1] : 'My Team';
+        let file = fs.readFileSync(fileLocation, {encoding:'utf8', flag:'r'});
+        let team = buildTeamObjs(JSON.parse(file));
+        writeToFile('team.html', render(team, teamName));
+    }else{
+        console.log('Welcome to fancy smancy CLI team builder!');
+        askQuestions(questions.common);
+    }
 }
 
 init();
