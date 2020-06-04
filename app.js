@@ -125,12 +125,10 @@ function askQuestions(q){
 
     inquirer.prompt(q)
     .then((answers) => {
-        // position = answers.role;
         obj = answers;
-        // obj.position = answers.role
         obj.id = allEmployees.length + 1;
 
-        inquirer.prompt(questions[obj.position.toLowerCase()])
+        inquirer.prompt(questions[obj.role.toLowerCase()])
         .then((answers) => {
             for(answer in answers){ //ADD ROLE SPECIFIC ATTRIBUTE TO OBJ
                 obj[answer] = answers[answer];
@@ -156,7 +154,6 @@ function askQuestions(q){
 }
 
 function buildTeamObjs(arr){
-    console.log(arr);
     let team = arr.map((employee) => {
         let {name, email, id, officeNumber, github, school, role} = employee;
 
@@ -172,15 +169,16 @@ function buildTeamObjs(arr){
 }
 
 function init() {
+    console.log('Welcome to my fancy smancy CLI team builder!');
     if(process.argv.slice(2).length){
         let myArgs = process.argv.slice(2);
         let fileLocation = path.resolve(__dirname, myArgs[0]);
         let teamName = myArgs[1] ? myArgs[1] : 'My Team';
         let file = fs.readFileSync(fileLocation, {encoding:'utf8', flag:'r'});
         let team = buildTeamObjs(JSON.parse(file));
+
         writeToFile('team.html', render(team, teamName));
     }else{
-        console.log('Welcome to fancy smancy CLI team builder!');
         askQuestions(questions.common);
     }
 }

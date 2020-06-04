@@ -1,7 +1,7 @@
 [ 
     {
         "role": "Manager",
-        "name": "Bob",
+        "name": "Doug",
         "email": "doug@doug.doug",
         "id": 1,
         "officeNumber": 1
@@ -15,8 +15,8 @@
     },
     {
         "role": "Manager",
-        "name": "Jim",
-        "email": "jim@jim.jim",
+        "name": "Maria",
+        "email": "Mara@maria.maria",
         "id": 3,
         "officeNumber": 3 
     },
