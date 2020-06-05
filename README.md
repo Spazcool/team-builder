@@ -1,17 +1,12 @@
-<!-- 
-todo make cards draggable
- -->
 # CLI Team Builder
-A CLI app to build a software engineering team. The application prompts the user for information about the various team members. Leveraging Inquirer, the user can input any number of team members, and they may be a mix of managers, engineers and interns. When all members have been defined the app generates an HTML webpage that displays summaries for each person. Provides a clean UI for simple user input & offers JSON import for larger teams. This app runs in a Node environment.
+A CLI app to build a software engineering team. The application prompts the user for information about the various team members. Leveraging Inquirer, the user can input any number of team members, and they may be a mix of managers, engineers and interns. When all members have been defined the app generates an HTML webpage that displays draggable card summaries for each person. Provides a clean UI for simple user input & offers JSON import for larger teams. This app runs in a Node environment.
 
 <p align="center">
    <img width="80%" height="350vh" src="./images/terminal.png"/>
    <img width="80%" height="350vh" src="./images/browser.png"/>
-
 </p>
 
 [![Video](https://img.youtube.com/vi/Lc5zUFDXzLw/0.jpg)](https://www.youtube.com/embed/Lc5zUFDXzLw "video")
-[![Alt text](https://img.youtube.com/vi/VID/0.jpg)](https://www.youtube.com/watch?v=VID)
 
 ## Installation & Getting Started
 
@@ -46,6 +41,7 @@ A CLI app to build a software engineering team. The application prompts the user
 * fs
 * GitHub API
 * Bootstrap
+* jQuery & jQuery UI
 
 ## Examples
 

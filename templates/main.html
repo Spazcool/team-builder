@@ -29,7 +29,17 @@
         <div class="container">
           <span class="text-muted"><i class="fa fa-code" aria-hidden="true"></i> with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="http://www.spazcool.com">Douglas Wright</a></span>
         </div>
-      </footer>
+    </footer>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+    crossorigin="anonymous"></script>
+ 
+    <script>
+        let cards = $(".team-area").children();
+        cards.draggable({stack: ".card"});
+    </script>
 </body>
-
 </html>

@@ -1,58 +1,58 @@
 [ 
     {
         "role": "Manager",
-        "name": "Doug",
-        "email": "doug@doug.doug",
+        "name": "Joe Smith",
+        "email": "joe@fakemail.com",
         "id": 1,
         "officeNumber": 1
     },
     { 
         "role": "Engineer",
-        "name": "Mike",
-        "email": "mike@mike.mike",
+        "name": "Doug Wright",
+        "email": "douglas.wrightii@gmail.com",
         "id": 2,
-        "github": "mike" 
+        "github": "Spazcool" 
     },
     { 
         "role": "Engineer",
-        "name": "Joe",
-        "email": "joe@joe.jos",
-        "id": 5,
-        "github": "joe" 
+        "name": "Neola Dunkin",
+        "email": "neola@fakemail.com",
+        "id": 3,
+        "github": "neola" 
     },
     { 
         "role": "Engineer",
-        "name": "Madeline",
-        "email": "madeline@madeline.madeline",
-        "id": 6,
+        "name": "Madeline Lamour",
+        "email": "madeline@fakemail.com",
+        "id": 4,
         "github": "madeline" 
     },
     {
         "role": "Manager",
-        "name": "Maria",
-        "email": "Mara@maria.maria",
-        "id": 3,
+        "name": "Adam MacBeth",
+        "email": "adam@fakemail.com",
+        "id": 5,
         "officeNumber": 3 
     },
     {
         "role": "Intern",
-        "name": "Neola",
-        "email": "neola@neola.neola",
-        "id": 4,
+        "name": "Dan Norris",
+        "email": "dan@fakemail.com",
+        "id": 6,
         "school": "USM"
     },
     {
         "role": "Intern",
-        "name": "Neola",
-        "email": "neola@neola.neola",
-        "id": 4,
-        "school": "USM"
+        "name": "Samantha Duplesis",
+        "email": "samantha@fakemail.com",
+        "id": 7,
+        "school": "UNH"
     },
     {
         "role": "Intern",
-        "name": "Neola",
-        "email": "neola@neola.neola",
-        "id": 4,
-        "school": "USM"
+        "name": "David Bowdin",
+        "email": "david@fakemail.com",
+        "id": 8,
+        "school": "UMass Amherst"
     }
 ]

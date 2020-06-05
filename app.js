@@ -160,10 +160,10 @@ async function askQuestions(q){
                     .then((answers) => {
                         let teamName = answers.team ? answers.team : 'My Team';  
                         let team = buildTeamObjs(allEmployees);
-                        writeToFile(render(team, teamName), teamName.replace(/\s/g, ""));
+                        writeToFile(render(team, teamName), teamName.replace(/\s/g, "").toLowerCase());
                     }) 
                 }
-            });
+            })
         })
     })
 }
@@ -192,7 +192,7 @@ function init() {
         let file = fs.readFileSync(fileLocation, {encoding:'utf8', flag:'r'});
         let team = buildTeamObjs(JSON.parse(file));
 
-        writeToFile(render(team, teamName), teamName.replace(/\s/g, ""));
+        writeToFile(render(team, teamName), teamName.replace(/\s/g, "").toLowerCase());
     }else{
         askQuestions(questions.common);
     }
