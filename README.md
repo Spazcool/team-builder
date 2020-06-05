@@ -5,11 +5,11 @@ todo make cards draggable
 A CLI app to build a software engineering team. The application prompts the user for information about the various team members. Leveraging Inquirer, the user can input any number of team members, and they may be a mix of managers, engineers and interns. When all members have been defined the app generates an HTML webpage that displays summaries for each person. Provides a clean UI for simple user input & offers JSON import for larger teams. This app runs in a Node environment.
 
 <p align="center">
-   <img width="80%" height="350vh" src="./images/terminal.png">
-   <img width="80%" height="350vh" src="./images/browser.png">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Lc5zUFDXzLw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <img width="80%" height="350vh" src="./images/terminal.png"/>
+   <img width="80%" height="350vh" src="./images/browser.png"/>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/Lc5zUFDXzLw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
-
+[![Alternate Text](https://www.youtube.com/embed/Lc5zUFDXzLw)](https://www.youtube.com/embed/Lc5zUFDXzLw "vide")
 ## Installation & Getting Started
 
 1. Clone from the [Repo](https://github.com/Spazcool/team-builder), install modules & run app: 
