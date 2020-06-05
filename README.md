@@ -7,8 +7,7 @@ A CLI app to build a software engineering team. The application prompts the user
 <p align="center">
    <img width="80%" height="350vh" src="./images/terminal.png">
    <img width="80%" height="350vh" src="./images/browser.png">
-   [![Alt text](https://img.youtube.com/vi/Lc5zUFDXzLw/0.jpg)](https://www.youtube.com/watch?v=Lc5zUFDXzLw)
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Lc5zUFDXzLw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
 ## Installation & Getting Started
