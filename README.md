@@ -9,7 +9,9 @@ A CLI app to build a software engineering team. The application prompts the user
    <img width="80%" height="350vh" src="./images/browser.png"/>
    <iframe width="560" height="315" src="https://www.youtube.com/embed/Lc5zUFDXzLw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
+
 [![Alternate Text](https://www.youtube.com/embed/Lc5zUFDXzLw)](https://www.youtube.com/embed/Lc5zUFDXzLw "vide")
+
 ## Installation & Getting Started
 
 1. Clone from the [Repo](https://github.com/Spazcool/team-builder), install modules & run app: 
