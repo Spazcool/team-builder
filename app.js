@@ -4,12 +4,12 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-var emoji = require('node-emoji')
+const axios = require('axios');
+const emoji = require('node-emoji')
 require('dotenv').config();
 const render = require("./lib/htmlRenderer");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const questions = {
     team : [
@@ -71,9 +71,12 @@ const questions = {
             type: 'input',
             name: 'github',
             message: "Github Username: ",
-            validate: function(name){
-                return name !== '';
-            }
+            validate: async (input) => {
+                if(await isValidAcct(input)){
+                    return true;
+                }
+                return 'Please input a valid Github username.';
+            }    
         }
     ],
 
@@ -100,7 +103,8 @@ const questions = {
     ]
 };
 
-function writeToFile(data) {
+function writeToFile(data, fileName) {
+    let outputPath = path.join(OUTPUT_DIR, `${fileName}.html`);
     if(!fs.existsSync(OUTPUT_DIR)){
         fs.mkdirSync(OUTPUT_DIR,  (error) => {
             if(error){console.log(error)}
@@ -113,9 +117,25 @@ function writeToFile(data) {
     console.log(`\nHTML is complete!!!!\nIt is located here ${emoji.emojify(':point_right:')} ${outputPath}`);
 }
 
+async function isValidAcct(username){
+    return await axios.get(`https://api.github.com/users/${username}`, {
+      headers: { 'Authorization': `token ${process.env.token}`}
+    })
+    .then((response) => response )
+    .then((data) => {
+        if(data.status === 200){
+            return true;
+        } 
+        return false;
+    })
+    .catch((error) => {
+        return false;
+    })
+}
+
 let allEmployees = [];
 
-function askQuestions(q){
+async function askQuestions(q){
     let obj = {};
 
     inquirer.prompt(q)
@@ -140,7 +160,7 @@ function askQuestions(q){
                     .then((answers) => {
                         let teamName = answers.team ? answers.team : 'My Team';  
                         let team = buildTeamObjs(allEmployees);
-                        writeToFile(render(team, teamName));
+                        writeToFile(render(team, teamName), teamName.replace(/\s/g, ""));
                     }) 
                 }
             });
@@ -172,7 +192,7 @@ function init() {
         let file = fs.readFileSync(fileLocation, {encoding:'utf8', flag:'r'});
         let team = buildTeamObjs(JSON.parse(file));
 
-        writeToFile(render(team, teamName));
+        writeToFile(render(team, teamName), teamName.replace(/\s/g, ""));
     }else{
         askQuestions(questions.common);
     }
