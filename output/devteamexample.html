@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>My Team</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 jumbotron mb-3 team-heading">
+                <h1 class="text-center">Dev Team Example</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center team-area">
+            <div class="card employee-card col-xs-12 col-md-3" id="draggable-1">
+    <div class="card-header Manager">
+        <h2 class="card-title">Joe Smith</h2>
+        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 1</li>
+            <li class="list-group-item">Email: <a href="mailto:joe@fakemail.com">joe@fakemail.com</a></li>
+            <li class="list-group-item">Office number: 1</li>
+        </ul>
+    </div>
+</div>
+<div class="card employee-card col-xs-12 col-md-3" id="draggable-5">
+    <div class="card-header Manager">
+        <h2 class="card-title">Adam MacBeth</h2>
+        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 5</li>
+            <li class="list-group-item">Email: <a href="mailto:adam@fakemail.com">adam@fakemail.com</a></li>
+            <li class="list-group-item">Office number: 3</li>
+        </ul>
+    </div>
+</div>
+<div class="card employee-card col-xs-12 col-md-3" id="draggable-2">
+    <div class="card-header Engineer">
+        <h2 class="card-title">Doug Wright</h2>
+        <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>Engineer</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 2</li>
+            <li class="list-group-item">Email: <a href="mailto:douglas.wrightii@gmail.com">douglas.wrightii@gmail.com</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/Spazcool" target="_blank" rel="noopener noreferrer">Spazcool</a></li>
+        </ul>
+    </div>
+</div>
+<div class="card employee-card col-xs-12 col-md-3" id="draggable-3">
+    <div class="card-header Engineer">
+        <h2 class="card-title">Neola Dunkin</h2>
+        <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>Engineer</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 3</li>
+            <li class="list-group-item">Email: <a href="mailto:neola@fakemail.com">neola@fakemail.com</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/neola" target="_blank" rel="noopener noreferrer">neola</a></li>
+        </ul>
+    </div>
+</div>
+<div class="card employee-card col-xs-12 col-md-3" id="draggable-4">
+    <div class="card-header Engineer">
+        <h2 class="card-title">Madeline Lamour</h2>
+        <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>Engineer</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 4</li>
+            <li class="list-group-item">Email: <a href="mailto:madeline@fakemail.com">madeline@fakemail.com</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/madeline" target="_blank" rel="noopener noreferrer">madeline</a></li>
+        </ul>
+    </div>
+</div>
+<div class="card employee-card col-xs-12 col-md-3" id="draggable-6">
+    <div class="card-header Intern">
+        <h2 class="card-title">Dan Norris</h2>
+        <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 6</li>
+            <li class="list-group-item">Email: <a href="mailto:dan@fakemail.com">dan@fakemail.com</a></li>
+            <li class="list-group-item">School: USM</li>
+        </ul>
+    </div>
+</div>
+<div class="card employee-card col-xs-12 col-md-3" id="draggable-7">
+    <div class="card-header Intern">
+        <h2 class="card-title">Samantha Duplesis</h2>
+        <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 7</li>
+            <li class="list-group-item">Email: <a href="mailto:samantha@fakemail.com">samantha@fakemail.com</a></li>
+            <li class="list-group-item">School: UNH</li>
+        </ul>
+    </div>
+</div>
+<div class="card employee-card col-xs-12 col-md-3" id="draggable-8">
+    <div class="card-header Intern">
+        <h2 class="card-title">David Bowdin</h2>
+        <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 8</li>
+            <li class="list-group-item">Email: <a href="mailto:david@fakemail.com">david@fakemail.com</a></li>
+            <li class="list-group-item">School: UMass Amherst</li>
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+          <span class="text-muted"><i class="fa fa-code" aria-hidden="true"></i> with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="http://www.spazcool.com">Douglas Wright</a></span>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+    crossorigin="anonymous"></script>
+ 
+    <script>
+        let cards = $(".team-area").children();
+        cards.draggable({stack: ".card"});
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>My Team</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 jumbotron mb-3 team-heading">
+                <h1 class="text-center">Team Honey Badger</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center team-area">
+            <div class="card employee-card col-xs-12 col-md-3" id="draggable-1">
+    <div class="card-header Manager">
+        <h2 class="card-title">Bob</h2>
+        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 1</li>
+            <li class="list-group-item">Email: <a href="mailto:bob@k.com">bob@k.com</a></li>
+            <li class="list-group-item">Office number: 12</li>
+        </ul>
+    </div>
+</div>
+<div class="card employee-card col-xs-12 col-md-3" id="draggable-2">
+    <div class="card-header Engineer">
+        <h2 class="card-title">Steve</h2>
+        <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>Engineer</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 2</li>
+            <li class="list-group-item">Email: <a href="mailto:steve@k.com">steve@k.com</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/steve" target="_blank" rel="noopener noreferrer">steve</a></li>
+        </ul>
+    </div>
+</div>
+<div class="card employee-card col-xs-12 col-md-3" id="draggable-3">
+    <div class="card-header Intern">
+        <h2 class="card-title">Morgan</h2>
+        <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: 3</li>
+            <li class="list-group-item">Email: <a href="mailto:morg@k.com">morg@k.com</a></li>
+            <li class="list-group-item">School: UNH</li>
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+          <span class="text-muted"><i class="fa fa-code" aria-hidden="true"></i> with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="http://www.spazcool.com">Douglas Wright</a></span>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+    crossorigin="anonymous"></script>
+ 
+    <script>
+        let cards = $(".team-area").children();
+        cards.draggable({stack: ".card"});
+    </script>
+</body>
+</html>
